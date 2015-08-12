@@ -8,13 +8,17 @@
 <body data-ng-controller="mainController">
 
 
-<form>
-    <input type="text" data-ng-model="searchText" placeholder="enter username..."/>
-    <button data-ng-click="getUser()">Submit</button>
+<form class="search">
+        <input class="box"type="text" data-ng-model="searchText" placeholder="enter username..."/>
+
 </form>
 
+<div class ="outer">
+    <button data-ng-click="getUser()">Submit</button>
+</div>
+
 <div data-ng-repeat="song in userData">
-    <div>
+    <div class="artwork">
         <img src="http://i.ytimg.com/vi/L5z2-Mx9TNE/hqdefault.jpg" ng-click="play(song.permalink_url)" ng-if="!song.artwork_url">
         <img ng-src="{{song.artwork_url}}" ng-click="play(song.permalink_url)" ng-if="song.artwork_url">
     </div>
