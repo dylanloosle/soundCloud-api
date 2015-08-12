@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-ng-app="sounder">
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body data-ng-controller="mainController">
+
+
+<form>
+    <input type="text" data-ng-model="searchText" placeholder="enter username..."/>
+    <button data-ng-click="getUser()">Submit</button>
+</form>
+
+<div data-ng-repeat="song in userData">
+    <div>
+        <img src="http://i.ytimg.com/vi/L5z2-Mx9TNE/hqdefault.jpg" ng-click="play(song.permalink_url)" ng-if="!song.artwork_url">
+        <img ng-src="{{song.artwork_url}}" ng-click="play(song.permalink_url)" ng-if="song.artwork_url">
+    </div>
+</div>
+
+<div ng-bind-html="player_html"></div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://connect.soundcloud.com/sdk.js"></script>
+    <script src="app.js"></script>
+    <script src="mainController.js"></script>
+    <script src="soundService.js"></script>
+</body>
+</html>
